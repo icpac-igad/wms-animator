@@ -109,7 +109,7 @@ This endpoint only accepts `POST` requests with a `json` payload that should loo
 - parameter
     - name - the dynamic parameter name, usually time
     - values - a list of the different time values, usually in UTC format. This will be ordered from earliest to latest
-- title - title for the animation. For example if you are animating a cyclone, this can the the name of the cyclone as in example above
-- attribution - map attribution caption, usually the source of the imagery
+- title - title for the animation. For example if you are animating a cyclone, this can be the name of the cyclone as in example above
+- attribution - map attributions, usually the source of the data
 
-This sample configuration will give you an output similar to the sample shown above.
+This sample configuration will give you an output similar to the example shown above.
