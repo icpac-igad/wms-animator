@@ -93,7 +93,7 @@ This endpoint only accepts `POST` requests with a `json` payload that should loo
             "2022-02-22T08:00:00.000Z"
         ]
     },
-    "title": "Cyclone Emnati",
+    "title": "Tropical Cyclone Emnati",
     "attribution": "Eumetsat"
 }
 ```
@@ -108,7 +108,7 @@ This endpoint only accepts `POST` requests with a `json` payload that should loo
 
 ## Sample Output
 
-Sampe output for Tropical Cyclone [Emnati](https://reliefweb.int/disaster/ec-2022-000174-mdg)
+Sample output for Tropical Cyclone [Emnati](https://reliefweb.int/disaster/ec-2022-000174-mdg)
 
 ![Alt text](sample/emnati.gif "Cyclone Emnati")
 
