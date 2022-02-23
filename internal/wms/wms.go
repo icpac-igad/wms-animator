@@ -25,6 +25,7 @@ type Input struct {
 	BaseUrl     string            `json:"url"`
 	Parameter   Parameter         `json:"parameter"`
 	WmsParams   map[string]string `json:"wms_params"`
+	Title       string            `json:"title"`
 	Attribution string            `json:"attribution"`
 }
 
@@ -37,6 +38,7 @@ type ParamUrl struct {
 	Url         string
 	Value       string
 	Attribution string
+	Title       string
 }
 
 const maxDigesters = 50
@@ -60,7 +62,7 @@ func generateUrls(done <-chan struct{}, input Input) (<-chan ParamUrl, <-chan er
 			url := getUrl(baseUrl, input.Parameter.Name, value, input.WmsParams)
 
 			select {
-			case urls <- ParamUrl{Url: url, Value: value, Attribution: input.Attribution}:
+			case urls <- ParamUrl{Url: url, Value: value, Title: input.Title, Attribution: input.Attribution}:
 			case <-done:
 				errc <- errors.New("generator canceled")
 			}
@@ -189,17 +191,29 @@ func requestHttpImage(url ParamUrl) (image.Image, error) {
 		return nil, fmt.Errorf("error loading font file: %s", conf.Configuration.Wms.FontPath)
 	}
 
-	t, err := time.Parse(layoutISO, url.Value)
-
-	if err != nil {
-		return nil, fmt.Errorf("invalid date: %s ", url.Value)
-	}
-
 	textPadding := float64(15)
 	bgPadding := float64(10)
 	bgRadius := float64(4)
 	yPosition := float64(dc.Height()) - textPadding
 	dcWidth := dc.Width()
+
+	// add title
+	if url.Title != "" {
+		pTextWidth, pTextHeight := dc.MeasureString(url.Title)
+		dc.DrawRoundedRectangle(textPadding, textPadding, pTextWidth+bgPadding, pTextHeight+bgPadding, bgRadius)
+		dc.SetColor(color.RGBA{0, 0, 0, 100})
+		dc.Fill()
+
+		dc.SetColor(color.White)
+		dc.DrawString(url.Title, textPadding+(bgPadding/2), textPadding+(pTextHeight/2)+bgPadding)
+
+	}
+
+	t, err := time.Parse(layoutISO, url.Value)
+
+	if err != nil {
+		return nil, fmt.Errorf("invalid date: %s ", url.Value)
+	}
 
 	tString := t.Format(layoutISOString)
 
