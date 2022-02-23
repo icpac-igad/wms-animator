@@ -1,6 +1,6 @@
 # WMS Animator
 
-Animate WMS data for a given area from a list of time parameters
+Animate WMS data for a given area from a list of time parameters. Intended for WMST satellite imagery but can work for other WMST layers.
 
 ## Sample Output
 
