@@ -2,7 +2,13 @@
 
 Animate WMS data for a given area from a list of time parameters
 
-## Dependecies
+## Sample Output
+
+Sample output for Tropical Cyclone [Emnati](https://reliefweb.int/disaster/ec-2022-000174-mdg)
+
+![Alt text](sample/emnati.gif "Cyclone Emnati")
+
+## Dependencies
 
 The WMS animator service is built using [Go](https://go.dev/) and  can be executed either natively or using Docker, each of which has its own set of requirements.
 
@@ -106,10 +112,4 @@ This endpoint only accepts `POST` requests with a `json` payload that should loo
 - title - title for the animation. For example if you are animating a cyclone, this can the the name of the cyclone as in example above
 - attribution - map attribution caption, usually the source of the imagery
 
-## Sample Output
-
-Sample output for Tropical Cyclone [Emnati](https://reliefweb.int/disaster/ec-2022-000174-mdg)
-
-![Alt text](sample/emnati.gif "Cyclone Emnati")
-
-
+This sample configuration will give you an output similar to the sample shown above.
