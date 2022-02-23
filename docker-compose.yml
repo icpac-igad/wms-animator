@@ -1,0 +1,11 @@
+version: '3.0'
+
+services:
+  wms_animator:
+    image: eahazardswatch.icpac.net/wms_animator
+    container_name: wms_animator
+    build: .
+    restart: ${RESTART_POLICY}
+    command: -f /app/fonts/Fira_Sans/FiraSans-Regular.ttf
+    ports:
+      - ${PORT}:9000
