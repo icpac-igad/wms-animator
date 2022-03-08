@@ -24,6 +24,8 @@ func setDefaultConfig() {
 	viper.SetDefault("Server.ReadTimeoutSec", 5)
 	viper.SetDefault("Server.WriteTimeoutSec", 30)
 
+	viper.SetDefault("Wms.FramesPerSecond", 3)
+
 	viper.SetDefault("Metadata.Title", "wms-animator")
 	viper.SetDefault("Metadata.Description", "WMS Animator")
 }
@@ -53,7 +55,8 @@ type Metadata struct {
 }
 
 type Wms struct {
-	FontPath string
+	FontPath        string
+	FramesPerSecond int
 }
 
 // InitConfig initializes the configuration from the config file
@@ -74,8 +77,6 @@ func InitConfig(configFilename string) {
 		viper.AddConfigPath("/config")
 		viper.AddConfigPath("/etc")
 	}
-
-	fmt.Println(configFilename)
 
 	err := viper.ReadInConfig() // Find and read the config file
 

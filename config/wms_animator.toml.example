@@ -39,3 +39,4 @@ WriteTimeoutSec = 30
 
 [Wms]
 FontPath = "/app/fonts/Fira_Sans/FiraSans-Regular.ttf"
+FramesPerSecond = 2

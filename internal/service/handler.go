@@ -9,6 +9,7 @@ import (
 	"sort"
 
 	"github.com/gocraft/web"
+	"github.com/icpac-igad/wms-animator/internal/conf"
 	"github.com/icpac-igad/wms-animator/internal/wms"
 )
 
@@ -46,6 +47,14 @@ func (c *Context) HandleGet(rw web.ResponseWriter, req *web.Request) {
 		return
 	}
 
+	if input.FramesPerSecond == 0 {
+		if conf.Configuration.Wms.FramesPerSecond != 0 {
+			input.FramesPerSecond = conf.Configuration.Wms.FramesPerSecond
+		} else {
+			input.FramesPerSecond = 3
+		}
+	}
+
 	wmsImages, err := wms.GetAllWmsImages(input)
 
 	if err != nil {
@@ -67,9 +76,7 @@ func (c *Context) HandleGet(rw web.ResponseWriter, req *web.Request) {
 		wmsImagesSorted = append(wmsImagesSorted, wmsImages[key])
 	}
 
-	fps := 3
-
-	buff, err := wms.GenerateGif(wmsImagesSorted, fps)
+	buff, err := wms.GenerateGif(wmsImagesSorted, input.FramesPerSecond)
 
 	if err != nil {
 		err := appError{Status: http.StatusBadRequest, Message: err.Error()}

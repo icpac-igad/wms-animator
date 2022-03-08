@@ -22,11 +22,12 @@ type result struct {
 }
 
 type Input struct {
-	BaseUrl     string            `json:"url"`
-	Parameter   Parameter         `json:"parameter"`
-	WmsParams   map[string]string `json:"wms_params"`
-	Title       string            `json:"title"`
-	Attribution string            `json:"attribution"`
+	BaseUrl         string            `json:"url"`
+	Parameter       Parameter         `json:"parameter"`
+	WmsParams       map[string]string `json:"wms_params"`
+	Title           string            `json:"title"`
+	Attribution     string            `json:"attribution"`
+	FramesPerSecond int               `json:"frames_per_second"`
 }
 
 type Parameter struct {
