@@ -7,5 +7,7 @@ services:
     build: .
     restart: ${RESTART_POLICY}
     command: -f /app/fonts/Fira_Sans/FiraSans-Regular.ttf
+    volumes:
+      - ./config:/config
     ports:
       - ${PORT}:9000
