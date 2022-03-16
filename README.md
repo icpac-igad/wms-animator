@@ -2,6 +2,8 @@
 
 Animate WMS data for a given area from a list of time parameters. Intended for WMST satellite imagery but can work for other WMST layers.
 
+This repo contains the backend implementation. You will need to develop a frontend interface if you need one. An example UI implementation can be seen at https://www.icpac.net/cyclone-animation-generator
+
 ## Sample Output
 
 Sample output for Tropical Cyclone [Emnati](https://reliefweb.int/disaster/ec-2022-000174-mdg)
