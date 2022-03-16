@@ -32,7 +32,7 @@ After that, follow one of the instructions below:
 
 ### Using native execution
 
-1 - Install go dependencies using yarn:
+1 - Install go dependencies using go:
 ```
 go get
 
